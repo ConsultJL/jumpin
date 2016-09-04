@@ -1,0 +1,133 @@
+<body>
+<script type="text/javascript">
+    $( document ).ready(function() {
+        loadComments('{{post.id}}');
+    });
+</script>
+{{> navbar }}
+<br><br><br>
+<!-- content push wrapper -->
+<div class="st-pusher" id="content">
+
+    <!-- sidebar effects INSIDE of st-pusher: -->
+    <!-- st-effect-3, st-effect-6, st-effect-7, st-effect-8, st-effect-14 -->
+
+    <!-- this is the wrapper for the content -->
+    <div class="st-content">
+
+        <!-- extra div for emulating position:fixed of the menu -->
+        <div class="st-content-inner">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-gray">
+                                <h2>{{post.User.firstName}} posted {{post.title}}</h2>
+                            </div>
+                            <div class="panel-body">
+                              {{#if post.desc}}
+                                {{{post.desc}}}
+                              {{else}}
+                                {{post.title}}
+                              {{/if}}
+                                <br>
+                              {{#if post.link}}
+                                  <a id="oembed" href="{{post.link}}">{{post.link}}</a>
+                              {{/if}}
+                            </div>
+                            <div style="padding: 5px;">
+                              {{#if post.video_url}}
+                                  <div class="embed-responsive embed-responsive-16by9">
+                                      <video class="embed-responsive-item" controls>
+                                          <source src="{{post.video_url}}">
+                                          Your browser does not support HTML5 video, please switch to a browse that does.
+                                      </video>
+                                  </div>
+                              {{/if}}
+                              {{#if post.picture_url}}
+                                  <img class="img-responsive" src="{{post.picture_url}}" />
+                              {{/if}}
+                            </div>
+
+                            <ul class="comments">
+                                <li class="comment-form">
+                                    <div class="row">
+                                        <div class="col-xs-9">
+                                            <input id="reply_to_comment{{post.id}}" type="text" placeholder="Leave a comment!" class="form-control" width="100%" style="margin-left: 10px;">
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <button class="btn btn-success" onclick="postComment('{{post.id}}');">Reply</button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div id="comments{{post.id}}">
+                                <ul id="ul_comments_{{post.id}}" class="comments">
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /st-content-inner -->
+
+    </div>
+    <!-- /st-content -->
+
+</div>
+<!-- /st-pusher -->
+
+<!-- Footer -->
+<footer class="footer">
+    <strong>JumpInstitute LLC</strong>&copy; Copyright 2016
+</footer>
+<!-- // Footer -->
+
+</div>
+<!-- /st-container -->
+
+<!-- Inline Script for colors and config objects; used by various external scripts; -->
+<script>
+    var colors = {
+        "danger-color": "#e74c3c",
+        "success-color": "#e74c3c",
+        "warning-color": "#f0ad4e",
+        "inverse-color": "#2c3e50",
+        "info-color": "#2d7cb5",
+        "default-color": "#6e7882",
+        "default-light-color": "#cfd9db",
+        "purple-color": "#9D8AC7",
+        "mustard-color": "#d4d171",
+        "lightred-color": "#e15258",
+        "body-bg": "#f6f6f6"
+    };
+    var config = {
+        theme: "social-3",
+        skins: {
+            "default": {
+                "primary-color": "#16ae9f"
+            },
+            "orange": {
+                "primary-color": "#"
+            },
+            "blue": {
+                "primary-color": "#4687ce"
+            },
+            "purple": {
+                "primary-color": "#af86b9"
+            },
+            "brown": {
+                "primary-color": "#c3a961"
+            },
+            "default-nav-inverse": {
+                "color-block": "#242424"
+            }
+        }
+    };
+</script>

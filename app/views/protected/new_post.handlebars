@@ -1,0 +1,140 @@
+<body>
+{{> navbar }}
+<br><br><br>
+<!-- content push wrapper -->
+<div class="st-pusher" id="content">
+
+    <!-- sidebar effects INSIDE of st-pusher: -->
+    <!-- st-effect-3, st-effect-6, st-effect-7, st-effect-8, st-effect-14 -->
+
+    <!-- this is the wrapper for the content -->
+    <div class="st-content">
+
+        <!-- extra div for emulating position:fixed of the menu -->
+        <div class="st-content-inner">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-gray">
+                                <i class="fa fa-fw fa-info-circle"></i> New Post
+                            </div>
+                            <div class="panel-body">
+                              <form action="/new_post" method="post" enctype="multipart/form-data">
+                                  <ul class="list-unstyled profile-about margin-none">
+                                      <li class="padding-v-5">
+                                          <div class="row">
+                                              <div class="col-sm-4"><span class="text-muted">Title</span></div>
+                                              <div class="col-sm-8"><input class="form-control" type="text" name="title"></div>
+                                          </div>
+                                      </li>
+                                      <li class="padding-v-5">
+                                          <div class="row">
+                                              <div class="col-sm-4"><span class="text-muted">Description</span></div>
+                                              <div class="col-sm-8">
+                                                  <textarea name="desc"></textarea>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li class="padding-v-5">
+                                          <div class="row">
+                                              <div class="col-sm-4"><span class="text-muted">Link</span></div>
+                                              <div class="col-sm-8"><input class="form-control" type="text" name="link"></div>
+                                          </div>
+                                      </li>
+                                      <li class="padding-v-5">
+                                          <div class="row">
+                                              <div class="col-sm-12">
+                                                Please only select either a picture OR a video!
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li class="padding-v-5">
+                                          <div class="row">
+                                              <div class="col-sm-4"><span class="text-muted">Attach Picture?</span></div>
+                                              <div class="col-sm-8">
+                                                  <input type="file" class="form-control" name="postPicture" id="postPicture">
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li class="padding-v-5">
+                                          <div class="row">
+                                              <div class="col-sm-4"><span class="text-muted">Attach Video?</span></div>
+                                              <div class="col-sm-8">
+                                                  <input type="file" class="form-control" name="postVideo" id="postVideo">
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li class="padding-v-5">
+                                          <div class="row">
+                                              <div class="col-sm-4"><span class="text-muted"></span></div>
+                                              <div class="col-sm-8"><input class="btn btn-success" type="submit" value="Post"></div>
+                                          </div>
+                                      </li>
+                                  </ul>
+                              </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /st-content-inner -->
+
+    </div>
+    <!-- /st-content -->
+
+</div>
+<!-- /st-pusher -->
+
+<!-- Footer -->
+<footer class="footer">
+    <strong>JumpInstitute LLC</strong>&copy; Copyright 2016
+</footer>
+<!-- // Footer -->
+
+</div>
+<!-- /st-container -->
+
+<!-- Inline Script for colors and config objects; used by various external scripts; -->
+<script>
+    var colors = {
+        "danger-color": "#e74c3c",
+        "success-color": "#81b53e",
+        "warning-color": "#f0ad4e",
+        "inverse-color": "#2c3e50",
+        "info-color": "#2d7cb5",
+        "default-color": "#6e7882",
+        "default-light-color": "#cfd9db",
+        "purple-color": "#9D8AC7",
+        "mustard-color": "#d4d171",
+        "lightred-color": "#e15258",
+        "body-bg": "#f6f6f6"
+    };
+    var config = {
+        theme: "social-3",
+        skins: {
+            "default": {
+                "primary-color": "#16ae9f"
+            },
+            "orange": {
+                "primary-color": "#e74c3c"
+            },
+            "blue": {
+                "primary-color": "#4687ce"
+            },
+            "purple": {
+                "primary-color": "#af86b9"
+            },
+            "brown": {
+                "primary-color": "#c3a961"
+            },
+            "default-nav-inverse": {
+                "color-block": "#242424"
+            }
+        }
+    };
+</script>

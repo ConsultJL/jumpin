@@ -1,0 +1,189 @@
+<body>
+  {{> navbar }}
+  <!-- content push wrapper -->
+  <div class="st-pusher" id="content" style="margin-top: 50px;">
+
+      <!-- sidebar effects INSIDE of st-pusher: -->
+      <!-- st-effect-3, st-effect-6, st-effect-7, st-effect-8, st-effect-14 -->
+
+      <!-- this is the wrapper for the content -->
+      <div class="st-content">
+
+          <!-- extra div for emulating position:fixed of the menu -->
+          <div class="st-content-inner">
+
+              <div class="container container-feed">
+
+                  <div class="cover profile">
+                      <div class="wrapper">
+                          <div class="image">
+                              <img src="{{coverPhoto}}" alt="people" />
+                          </div>
+                        {{#if isPartOfTeam}}
+                          <script type="text/javascript">
+                              loadTeamMembers();
+                          </script>
+                          <ul class="friends" id="teamMembers"><!-- Add Team Members profile pics here -->
+                          </ul>
+                        {{else}}
+                          <ul class="friends">
+                              <li>
+                                  <strong>You aren't part of any teams!</strong>
+                              </li>
+                          </ul>
+                        {{/if}}
+                      </div>
+                      <div class="cover-info">
+                          <div class="avatar">
+                              <img src="{{profilePic}}" alt="{{username}}" />
+                          </div>
+                          <div class="name"><a href="/my_feed">{{username}}</a></div>
+                      </div>
+                  </div>
+                  <div class="timeline row" data-toggle="isotope">
+                      <div class="col-xs-12 col-md-6 col-lg-4 item">
+                          <div class="timeline-block">
+                              <div class="panel panel-default share clearfix-xs">
+                                  <div class="panel-heading panel-heading-gray title">
+                                      What&acute;s new
+                                  </div>
+                                <div class="panel-body">
+                                  <a href="/new_post">
+                                      <button class="btn btn-success">Post something new and AWESOME!</button>
+                                  </a>
+                                </div>
+                              </div>
+                          </div>
+                      </div>
+                      {{#each posts}}
+                        <script type="text/javascript">
+                            $( document ).ready(function() {
+                                loadComments('{{id}}');
+                            });
+                        </script>
+                          <div class="col-xs-12 col-md-6 col-lg-4 item">
+                              <div class="timeline-block">
+                                  <div class="panel panel-default">
+
+                                      <div class="panel-heading">
+                                          <div class="media">
+                                              <div class="media-left">
+                                                  <!-- Change this to the Users profile pic -->
+                                                <img src="{{User.profilePic}}" class="media-object" style="width: 50px;">
+                                              </div>
+                                              <div class="media-body">
+                                                  <a href="">{{User.firstName}} {{User.lastName}}</a>
+
+                                                  <span>on {{formatDate createdAt "Do MMMM YYYY"}}</span>
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                      <div class="panel-body">
+                                        {{#if desc}}
+                                          {{{desc}}}
+                                        {{else}}
+                                          {{title}}
+                                        {{/if}}
+                                        <br>
+                                        {{#if link}}
+                                          {{link_title}}
+                                          {{link_thumbnail}}
+                                          {{link_desc}}
+                                          <a id="oembed" href="{{link}}">{{title}}</a>
+                                        {{/if}}
+                                      </div>
+                                      {{#if video_url}}
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            <video class="embed-responsive-item" controls>
+                                              <source src="{{video_url}}">
+                                              Your browser does not support HTML5 video, please switch to a browse that does.
+                                            </video>
+                                        </div>
+                                      {{/if}}
+                                      {{#if picture_url}}
+                                        <img class="img-responsive" src="{{picture_url}}" />
+                                      {{/if}}
+
+                                      <ul class="comments">
+                                          <li class="comment-form">
+                                              <div class="row">
+                                                <div class="col-xs-9">
+                                                    <input id="reply_to_comment{{id}}" type="text" placeholder="Leave a comment!" class="form-control" width="100%" style="margin-left: 10px;">
+                                                </div>
+                                                <div class="col-xs-3">
+                                                    <button class="btn btn-success" onclick="postComment('{{id}}');">Reply</button>
+                                                </div>
+                                              </div>
+                                          </li>
+                                      </ul>
+
+                                      <div id="comments{{id}}">
+                                        <ul id="ul_comments_{{id}}" class="comments">
+
+                                        </ul>
+                                      </div>
+
+                                  </div>
+                              </div>
+                          </div>
+                      {{/each}}
+                  </div>
+
+              </div>
+
+          </div>
+          <!-- /st-content-inner -->
+
+      </div>
+      <!-- /st-content -->
+
+  </div>
+  <!-- /st-pusher -->
+
+  <!-- Footer -->
+  <footer class="footer">
+      <strong>JumpInstitute LLC</strong>&copy; Copyright 2016
+  </footer>
+  <!-- // Footer -->
+
+  </div>
+  <script src="js/site.js"></script>
+  <script>
+      var colors = {
+          "danger-color": "#e74c3c",
+          "success-color": "#81b53e",
+          "warning-color": "#f0ad4e",
+          "inverse-color": "#2c3e50",
+          "info-color": "#2d7cb5",
+          "default-color": "#6e7882",
+          "default-light-color": "#cfd9db",
+          "purple-color": "#9D8AC7",
+          "mustard-color": "#d4d171",
+          "lightred-color": "#e15258",
+          "body-bg": "#f6f6f6"
+      };
+      var config = {
+          theme: "social-3",
+          skins: {
+              "default": {
+                  "primary-color": "#16ae9f"
+              },
+              "orange": {
+                  "primary-color": "#e74c3c"
+              },
+              "blue": {
+                  "primary-color": "#4687ce"
+              },
+              "purple": {
+                  "primary-color": "#af86b9"
+              },
+              "brown": {
+                  "primary-color": "#c3a961"
+              },
+              "default-nav-inverse": {
+                  "color-block": "#242424"
+              }
+          }
+      };
+  </script>
