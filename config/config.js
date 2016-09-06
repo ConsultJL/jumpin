@@ -1,6 +1,6 @@
 var path = require('path'),
     rootPath = path.normalize(__dirname + '/..'),
-    env = process.env.NODE_ENV || 'production';
+    env = process.env.NODE_ENV || 'development';
 
 var config = {
   development: {
@@ -18,7 +18,7 @@ var config = {
     },
     port: process.env.PORT || 3000,
     // This will be replaced by AWS
-    db: 'mysql://jumpindev:Jumpindev11!@aa17gigy3d170ek.cccaubjwjhu0.us-west-2.rds.amazonaws.com/jumpin_prod',
+    db: 'mysql://jumpindev:Jumpindev11!@aa17gigy3d170ek.cccaubjwjhu0.us-west-2.rds.amazonaws.com/jumpin_prod'
   }
 };
 
