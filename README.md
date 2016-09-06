@@ -5,9 +5,20 @@
 2. Ensure you are running Node V4.2.4 or higher
 3. Modify [/config/config.js](/config/config.js#L12) with YOUR database credentials
 4. Execute ```npm install```
-5. Execute ```node app.js```
-6. Navigate to [http://localhost:3000](http://localhost:3000)
-7. Winning, start your development.
+5. You will need to make a modification to a node_module, it's a known bug that has not be fixed yet.
+   1. Open node_modules/sequelize-cli/lib/task/db.js
+   2. Change line 340 from 
+   ```node
+   return new Sequelize(config.database, config.username, config.password, options);
+   ```
+   To 
+   ```node
+   return new Sequelize(config.db);
+   ```
+6. Execute ```node_modules/.bin/sequelize db:migrate``` from your project directory. This will execute all migrations in the migration directory.
+7. Execute ```node app.js```
+8. Navigate to [http://localhost:3000](http://localhost:3000)
+9. Winning, start your development.
 
 ## General Layout
 Everything you will care about is located in /app/.
@@ -20,6 +31,7 @@ Everything you will care about is located in /app/.
 * [Handlebars](http://handlebarsjs.com/) is used for all display logic.
 * [Passport](http://passportjs.org/docs) is used for authentication and session tracking.
 * [Sequelize](http://docs.sequelizejs.com/en/v3/) is used for all database interactions.
+* [Sequelize Migrations](http://docs.sequelizejs.com/en/latest/docs/migrations/) for all migrations.
 * ThemeKit 4.0 was used as the theme of the site.
 * [Multer](https://www.npmjs.com/package/multer), [Multer-s3](https://www.npmjs.com/package/multer-s3) & [AWS-SDK](https://www.npmjs.com/package/aws-sdk) are used for all Amazon interactions mostly around S3.
 * For all other minor packages please refer to the [package.json](/package.json)
